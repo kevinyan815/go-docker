@@ -1,0 +1,31 @@
+version: '3'
+services:
+  # The Application
+  app:
+    image: golang:latest
+    working_dir: /go/src/example.com/http_demo
+    volumes:
+      - /$GOPATH/src/example.com/http_demo:/go/src/code.qschou.com/http_demo
+      - /$GOPATH/src:/go/src
+    ports:
+      - "8000:8080"
+    environment:
+      WORKING_DIR: /go/src/e.qschou.com/practice/http_demo
+    command: go run /go/src/example.com/http_demo/main.go
+
+  # The Database
+  database:
+    image: mysql:5.7
+    volumes:
+      - dbdata:/var/lib/mysql
+    environment:
+      - "MYSQL_DATABASE=go_web"
+      - "MYSQL_USER=go_web"
+      - "MYSQL_PASSWORD=go_web"
+      - "MYSQL_ROOT_PASSWORD=secret"
+    ports:
+      - "33063:3306"
+
+volumes:
+  dbdata:
+
