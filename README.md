@@ -1,6 +1,6 @@
 # go-docker
 
-1. Put this file in your project root or any other directory
+1. Put this `docker-compose.yml`file in your project root or any other directory
 
 2. Run `docker-compose up -d`
 
